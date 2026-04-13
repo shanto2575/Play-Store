@@ -31,7 +31,7 @@ const Navbar = () => {
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             {
-                                NavLink.map((item,index) => (
+                                NavLink.map((item, index) => (
                                     <MyNavLink key={index} to={item.path}>{item.Text}</MyNavLink>
                                 ))
                             }
@@ -45,10 +45,10 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {
-                                NavLink.map((item,index) => (
-                                    <MyNavLink key={index} to={item.path}>{item.Text}</MyNavLink>
-                                ))
-                            }
+                            NavLink.map((item, index) => (
+                                <MyNavLink key={index} to={item.path}>{item.Text}</MyNavLink>
+                            ))
+                        }
                         {/* <li><MyNavLink to={'/'}>Home</MyNavLink></li>
                         <li><MyNavLink to={'/apps'}>Apps</MyNavLink></li>
                         <li><MyNavLink to={'/installation'} >Installation</MyNavLink></li> */}

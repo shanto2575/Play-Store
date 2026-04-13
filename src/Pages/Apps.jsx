@@ -17,7 +17,7 @@ const Apps = () => {
                         <span className="loading loading-infinity loading-xl text-purple-600" ></span>
                     </div>
                 ) : (
-                    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 p-5 mb-10">
                         {
                             Apps.map((app, index) => (
                                 <AppCard key={index} app={app} />
