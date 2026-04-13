@@ -6,11 +6,12 @@ import { useContext } from 'react'
 import { InstallAppsContext } from '../Context/AppsInsrallContext'
 import Installation from './Installation';
 import { toast } from 'react-toastify'
+import RatingChart from '../UI/RatingChart'
 
 const AppsDetails = () => {
     const { id } = useParams()
     const { Apps, Loading } = useApps()
-    const {Installation,setInstallation}=useContext(InstallAppsContext)
+    const { Installation, setInstallation } = useContext(InstallAppsContext)
     // console.log(contextdata)
 
     if (Loading) {
@@ -25,54 +26,59 @@ const AppsDetails = () => {
     }
     const { image, title, downloads, ratingAvg, reviews, companyName } = isExist;
 
-    
 
-    const handleAppsInstall=()=>{
-        const isAlreadyInstalled=Installation.find(app=>app.id===isExist.id)
 
-        if(isAlreadyInstalled){
+    const handleAppsInstall = () => {
+        const isAlreadyInstalled = Installation.find(app => app.id === isExist.id)
+
+        if (isAlreadyInstalled) {
             toast.error(`${title} is alrady Installed`)
             return;
         }
-        setInstallation([...Installation,isExist])
+        setInstallation([...Installation, isExist])
         toast.success(`${title} is Installs!`);
     }
 
     return (
-        <div className='flex gap-10 my-10 bg-gray-100 rounded-2xl p-5 container mx-auto'>
-            <div>
-                <img src={image} alt={title} className='h-48 w-48' />
-            </div>
-            <div >
+        <div>
+            <div className='flex gap-10 my-10 bg-gray-100 rounded-2xl p-5 container mx-auto'>
                 <div>
-                    <h3 className='text-3xl font-bold'>{title}</h3>
-                    <h2>Develop By: {companyName}</h2>
+                    <img src={image} alt={title} className='h-48 w-48' />
                 </div>
-                <div className='border-t mt-5'>
-                    <div className='flex  gap-6 '>
-                        <div className='flex flex-col items-center my-4 space-y-1'>
-                            <FaDownload className='font-bold text-2xl'></FaDownload>
-                            <h2 className='text-gray-400'>Download</h2>
-                            <h2 className='font-bold text-2xl'>{downloads}</h2>
-                        </div>
-                        <div className='flex flex-col items-center my-4 space-y-1 '>
-                            <FaStar className='font-bold text-2xl'></FaStar>
-                            <h2>Average Ratings</h2>
-                            <h2 className='font-bold text-2xl'>{ratingAvg}</h2>
-                        </div>
-                        <div className='flex flex-col items-center my-4 space-y-1'>
-                            <FcLike className='font-bold text-2xl'></FcLike>
-                            <h2>Total Reviews</h2>
-                            <h2 className='font-bold text-2xl'>{reviews}</h2>
+                <div >
+                    <div>
+                        <h3 className='text-3xl font-bold'>{title}</h3>
+                        <h2>Develop By: {companyName}</h2>
+                    </div>
+                    <div className='border-t mt-5'>
+                        <div className='flex  gap-6 '>
+                            <div className='flex flex-col items-center my-4 space-y-1'>
+                                <FaDownload className='font-bold text-2xl'></FaDownload>
+                                <h2 className='text-gray-400'>Download</h2>
+                                <h2 className='font-bold text-2xl'>{downloads}</h2>
+                            </div>
+                            <div className='flex flex-col items-center my-4 space-y-1 '>
+                                <FaStar className='font-bold text-2xl'></FaStar>
+                                <h2>Average Ratings</h2>
+                                <h2 className='font-bold text-2xl'>{ratingAvg}</h2>
+                            </div>
+                            <div className='flex flex-col items-center my-4 space-y-1'>
+                                <FcLike className='font-bold text-2xl'></FcLike>
+                                <h2>Total Reviews</h2>
+                                <h2 className='font-bold text-2xl'>{reviews}</h2>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className='flex gap-7'>
-                    {/* <Link to={'/installation'}> */}
+                    <div className='flex gap-7'>
+                        {/* <Link to={'/installation'}> */}
                         <button className='btn btn-success text-white font-bold ' onClick={handleAppsInstall}>Installation Now</button>
-                    {/* </Link> */}
-                    <Link to={'/apps'}><button className='btn btn-primary font-bold text-white'>Go Back</button></Link>
+                        {/* </Link> */}
+                        <Link to={'/apps'}><button className='btn btn-primary font-bold text-white'>Go Back</button></Link>
+                    </div>
                 </div>
+            </div>
+            <div className='container mx-auto'>
+                <RatingChart ratings={isExist.ratings}></RatingChart>
             </div>
         </div>
     )
