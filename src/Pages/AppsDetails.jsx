@@ -28,6 +28,12 @@ const AppsDetails = () => {
     
 
     const handleAppsInstall=()=>{
+        const isAlreadyInstalled=Installation.find(app=>app.id===isExist.id)
+
+        if(isAlreadyInstalled){
+            toast.error(`${title} is alrady Installed`)
+            return;
+        }
         setInstallation([...Installation,isExist])
         toast.success(`${title} is Installs!`);
     }
@@ -63,7 +69,7 @@ const AppsDetails = () => {
                 </div>
                 <div className='flex gap-7'>
                     {/* <Link to={'/installation'}> */}
-                        <button className='btn btn-success text-white font-bold' onClick={handleAppsInstall}>Installation Now</button>
+                        <button className='btn btn-success text-white font-bold ' onClick={handleAppsInstall}>Installation Now</button>
                     {/* </Link> */}
                     <Link to={'/apps'}><button className='btn btn-primary font-bold text-white'>Go Back</button></Link>
                 </div>

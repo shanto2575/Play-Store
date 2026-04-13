@@ -6,9 +6,9 @@ import TrandingApps from '../Components/Homepage/TrandingApps'
 const Home = () => {
     return (
         <>
-        <Banner></Banner>
-        <Stats></Stats>
-        <TrandingApps></TrandingApps>
+            <Banner></Banner>
+            <Stats></Stats>
+            <TrandingApps></TrandingApps>
         </>
     )
 }

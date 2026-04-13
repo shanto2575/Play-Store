@@ -14,6 +14,9 @@ const Navbar = () => {
         {
             path: '/installation', Text: 'Installation'
         },
+        {
+            path: '/dashboard', Text: 'Dashboard'
+        },
     ]
     return (
         <nav className=' shadow'>
